@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # List all files and IDs, and save as TXT
-rclone lsf -R --files-only --format pi GDrive:Born\ Digital/Born\ Digital\ Initiative\ 1.0/Electronic\ File\ Transfers/Test > $HOME/Desktop/path_ID_list.txt
+rclone lsf -R --files-only --format pi GDrive:Born\ Digital/Born\ Digital\ Initiative\ 1.0/Electronic\ File\ Transfers/Shelly_Test > $HOME/Desktop/path_ID_list.txt
+# For numbering logic to work, duplicate names need to be grouped together
+sort -n -o $HOME/Desktop/path_ID_list.txt $HOME/Desktop/path_ID_list.txt 
 
 while IFS=';' read -r path ID
 do
