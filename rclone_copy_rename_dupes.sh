@@ -7,10 +7,10 @@ sort -n -o $HOME/Desktop/path_ID_list.txt $HOME/Desktop/path_ID_list.txt
 
 while IFS=';' read -r path ID
 do
-    if ! [ -f $HOME/Desktop/rclone/$path ]; then
-        rclone backend copyid -Pv --log-file $HOME/Desktop/log.txt GDrive: $ID $HOME/Desktop/rclone/$path
+    if ! [ -f $HOME/Desktop/rclone/"$path" ]; then
+        rclone backend copyid -Pv --log-file $HOME/Desktop/log.txt GDrive: $ID $HOME/Desktop/rclone/"$path"
         i=1
-    elif [ -f $HOME/Desktop/rclone/$path ]; then
+    elif [ -f $HOME/Desktop/rclone/"$path" ]; then
         rclone backend copyid -Pv --log-file $HOME/Desktop/log.txt GDrive: $ID $HOME/Desktop/rclone/"${path%.*}"_copy""$i""."${path##*.}"
     fi
     (( ++i ))
